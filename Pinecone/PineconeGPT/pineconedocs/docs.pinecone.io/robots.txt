@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /edit/
+Disallow: /login
+Disallow: /reference-edit/
+Disallow: /logout
+Disallow: /pinecone/edit/
+Disallow: /pinecone/reference-edit/

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5RCSPVG');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google Tag Manager (noscript) -->
+ <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RCSPVG"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Sign up or log into Pinecone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel=stylesheet href=/sass/style.min.246857dc7c1299ecde2d535d4cb1dd2bd168a924e7fb053618ae182308b8d879.css>
+  <link rel=stylesheet href=/sass/prism.min.305f35b3530c1a5af21a66c875bc15ad7b82c0b987dfcc8c1fa1bf2e2cad93b4.css media=print onload='media="all"'>
+  <style>
+    /* Fonts */
+    @font-face {
+      font-family: "MediumLLWeb";
+      src: url("https://production-console.firebaseapp.com/assets/fonts/MediumLLWeb-SemiBold.woff2") format("woff2"),
+        url("https://production-console.firebaseapp.com/assets/fonts/MediumLLWeb-SemiBold.woff") format("woff");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "MediumLLWeb";
+      src: url("https://production-console.firebaseapp.com/assets/fonts/MediumLLWeb-Regular.woff2") format("woff2"),
+        url("https://production-console.firebaseapp.com/assets/fonts/MediumLLWeb-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+     #login-page {
+      font-family: "MediumLLWeb", sans-serif;
+      margin: 0;
+      background-color: #fff;
+    }
+
+    #signup-page {
+      font-family: "MediumLLWeb", sans-serif;
+      margin: 0;
+      background-color: #030080;
+    }
+    
+    /* Overriding Auth0 CSS */
+    body .auth0-lock.auth0-lock .auth0-lock-social-button[data-provider^=github].auth0-lock-social-big-button {
+      border: 1px solid #dee0e2 !important;
+    }
+    
+    body .auth0-lock.auth0-lock .auth0-lock-terms {
+      background: #fff;
+      padding-bottom: 1rem;
+    }
+    
+    body .auth0-lock.auth0-lock .auth0-lock-header-bg {
+      background: none;
+    }
+
+    .auth0-lock-cred-pane-internal-wrapper {
+      height: auto !important;
+    }
+
+    .auth0-lock-header-bg-blur {
+      opacity: 0 !important;
+    }
+
+    .auth0-lock-header-bg-solid {
+      opacity: 0 !important;
+    }
+    
+    .auth0-lock.auth0-lock .auth0-lock-social-button[data-provider^=github]:hover:not([disabled]) .auth0-lock-social-button-icon,
+    .auth0-lock.auth0-lock .auth0-lock-social-button[data-provider^=github]:hover:not([disabled]) .auth0-lock-social-button-text {
+      background-color: #f0f0f0 !important;
+    }
+    
+    /* Ends overriding Auth0 CSS*/
+    
+    body {
+      font-family: "MediumLLWeb", sans-serif;
+      margin: 0;
+    }
+    
+    .base {
+      min-height: 100vh;
+    }
+
+    .pinecone-logo {
+      width: 8.75rem;
+    }
+
+    #signup-page .container-left {
+      padding: 1.5rem;
+      background-color: #030080;
+    }
+
+    #login-page .container-left {
+      padding: 1.5rem;
+      background-color: #fff;
+    }
+
+    #login-page .title {
+      font-size: clamp(1.2rem, 7vw, 2.25rem);
+      line-height: 1.325;
+      color: #000;
+      margin: 1.75rem 0 0 0;
+    }
+
+    #signup-page .title {
+      font-size: clamp(1.2rem, 7vw, 2.25rem);
+      line-height: 1.325;
+      color: #fff;
+      margin: 1.75rem 0 0 0;
+    }
+
+    #signup-page .title > span {
+      color: #8cf1ff;
+      display: block;
+    }
+
+    #signup-page .title > span {
+      color: #8cf1ff;
+      display: block;
+    }
+
+    #signup-page .signup-cta {
+      font-weight: 500;
+      line-height: 1.325;
+      color: #000;
+    }
+
+    .alt {
+      color: white !important;
+      padding: 0 !important;
+      margin-block: 40px;
+      margin-top: 10px !important;
+    }
+
+    .alt a {
+      color: #8cf1ff !important;
+    }
+
+    .signup-cta {
+      font-weight: 500;
+      line-height: 1.325;
+      margin-top: -5px;
+      padding-bottom: 2rem;
+      text-align: center;
+    }
+
+    #signup-page .signup-cta > a {
+      color: #1815da;
+      display: inline;
+      text-decoration: none;
+    }
+
+    .login-cta {
+      font-weight: 500;
+      line-height: 1.325;
+      margin-top: 15px;
+      padding-bottom: 25px;
+      text-align: center;
+    }
+
+    #login-page .login-cta > a {
+      color: #1815da;
+      display: inline;
+      text-decoration: none;
+    }
+
+
+    .auth-container-mobile {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.25rem;
+    }
+
+    .lock-container-small {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.25);
+    }
+
+    .lock-container-small > .signup-cta {
+      margin-top: 2rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      background-color: #25239d;
+      padding: 1.25rem;
+      border-radius: 10px;
+    }
+
+    .card-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .card-content > h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #f2f2f2;
+      margin: 0;
+    }
+
+    .card-content > p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #f2f2f2;
+      margin: 0.25rem 0 0;
+    }
+
+    .logos {
+      margin-top: 3.375rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .logo {
+      width: 100%;
+      max-width: 6.25rem;
+    }
+
+    .logo > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .logo-gong {
+      transform: translateY(4px);
+    }
+
+    .container-right {
+      display: none;
+    }
+
+    .session-toggle-link {
+      text-decoration: none;
+    }
+
+    @media (min-width: 30em) {
+      .logos {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 52.5em) {
+      .base {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .container-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+      }
+
+      .logos {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .title {
+        font-size: clamp(1.875rem, 3vw, 2.75rem);
+        color: #000;
+      }
+
+      .container-right {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        background-color: #F0F3F7;
+      }
+
+      .login.container-right {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        background-color: #F0F3F7;
+      }
+
+      .bg-container {
+        position: absolute;
+        inset: 0;
+        background: url("https://production-console.firebaseapp.com/assets/bg.svg") no-repeat center center;
+        z-index: 1;
+      }
+
+      .auth-container-mobile {
+        display: none;
+      }
+
+      .inner-container {
+        max-width: 35.25rem;
+      }
+
+      .auth-container-desktop {
+        position: relative;
+        z-index: 10;
+        margin-top: 1.25rem;
+      }
+
+      .lock-container-large {
+        background-color: #fff;
+        box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+      }
+
+      .lock-container-large.login {
+        background-color: #fff;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+        border-radius: 10px;
+      }
+    }
+
+    @media (min-width: 64em) {
+      .cards {
+        margin-top: 2.25rem;
+      }
+
+      .card {
+        padding: 1.25rem 3rem 1.25rem 2.25rem;
+      }
+
+      .card-content > h3 {
+        font-size: 1.5rem;
+      }
+
+      .logos {
+        margin-top: 3.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .container-left,
+      .container-right {
+        padding: 2rem;
+      }
+
+      #lock-container-large {
+        padding: 2.5rem;
+      }
+
+    }
+
+    .alert-content {
+            display: block;
+            align-items: center; 
+            margin-left: 10px;
+            padding: 16px;
+            width: fit-content;
+          }
+
+          .alert-notification {
+            z-index: 1000;
+            display: flex;
+            margin-bottom: 30px;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 9px;
+            padding-top: 5px;
+            padding-right: 18px;
+            padding-bottom: 5px;
+            padding-left: 18px;
+            border-style: solid;
+            background-color: rgba(27, 28, 29, 1);
+          }
+
+          .alert-icon {
+            height: 2rem;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .alert-title {
+            color: white;
+            margin-bottom: 3px;
+          }
+
+          .alert-subtitle {
+            color: white;
+            font-size: medium;
+            opacity: 0.75;
+          }
+
+          .alert-subtitle>a {
+            color: white;
+            text-decoration: underline;
+          }
+  </style>
+</head>
+<body>
+  
+  <!-- Sign Up Page Start -->
+  <div id = 'signup-page'>
+  <div class="base">
+    <div class="container-left">
+      <div class="inner-container">
+        <svg
+          class="pinecone-logo"
+          height="30"
+          viewBox="0 0 142 30"
+          width="142"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g fill="none" fill-rule="evenodd" transform="translate(0 1)">
+            <path
+              d="m31.85 6.42h7.31c5.29 0 6.63 3.19 6.63 5.79s-1.37 5.79-6.63 5.79h-4.51v9.12h-2.8zm2.8 9.12h3.69c2.22 0 4.44-.52 4.44-3.33s-2.22-3.33-4.44-3.33h-3.69z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m49.45 6.32c1.0566415.00069523 1.9162854.85093806 1.9285991 1.90750808.0123137 1.05657001-.8272812 1.92661652-1.8836195 1.95193732-1.0563383.0253207-1.9366556-.80349887-1.9749796-1.8594454-.016192-.52310454.1796529-1.03056108.5430717-1.40716082.3634187-.37659973.8635789-.59039201 1.3869283-.59283918zm-1.29 6.94h2.6v13.86h-2.6z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m53.77 13.26h2.63v2.14h.06c.9168846-1.6356258 2.6883168-2.602921 4.56-2.49 2.69 0 5 1.61 5 5.29v8.92h-2.6v-8.18c0-2.61-1.49-3.57-3.16-3.57-2.19 0-3.86 1.4-3.86 4.62v7.13h-2.63z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m70.84 21.16c0 2.42 2.25 4 4.68 4 1.5243479-.0443266 2.9360567-.8133365 3.8-2.07l2 1.52c-1.4522206 1.9156-3.7595042 2.9868388-6.16 2.86-4.39 0-7.13-3.15-7.13-7.28-.0775176-1.9273249.6436889-3.8012232 1.9933444-5.1792726s3.2081347-2.1381078 5.1366556-2.1007274c4.88 0 6.75 3.74 6.75 7.31v.94zm8.32-2.11c-.06-2.31-1.35-4-4-4-2.2663131-.0154421-4.1517857 1.7384859-4.3 4z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m93.85 16.95c-.8561703-1.0121496-2.1246901-1.5820643-3.45-1.55-2.86 0-4.33 2.31-4.33 4.91-.0720213 1.2298113.3689911 2.434453 1.2180219 3.3270725.8490309.8926196 2.0301037 1.3933396 3.2619781 1.3829275 1.3020714.0436331 2.5480605-.5311536 3.36-1.55l1.87 1.85c-1.3606632 1.4403962-3.2804967 2.2178192-5.26 2.13-1.9459184.0979421-3.842755-.6301819-5.2233223-2.0050365-1.3805672-1.3748546-2.1165503-3.2686557-2.0266777-5.2149635-.0879343-1.9538421.6455561-3.8553698 2.0228188-5.2440306 1.3772627-1.3886607 3.2726808-2.1377979 5.2271812-2.0659694 2.0024423-.0508447 3.9336759.7441556 5.32 2.19z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m103.56 12.91c4.004347.0660147 7.203394 3.3540316 7.159564 7.3586833s-3.314073 7.2218644-7.318906 7.2003299c-4.0048334-.0217516-7.2401139-3.2741217-7.2406581-7.2790132-.0002651-1.9517484.7831834-3.8218653 2.1745128-5.1906327 1.3913295-1.3687673 3.2740043-2.121539 5.2254873-2.0893673zm0 12.11c2.8 0 4.56-2 4.56-4.83s-1.76-4.82-4.56-4.82-4.57 2-4.57 4.82 1.76 4.83 4.57 4.83z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m113.06 13.26h2.63v2.14c.920247-1.6372339 2.695354-2.6044142 4.57-2.49 2.69 0 5 1.61 5 5.29v8.92h-2.63v-8.18c0-2.61-1.49-3.57-3.15-3.57-2.2 0-3.86 1.4-3.86 4.62v7.13h-2.56z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m130.16 21.16c0 2.42 2.25 4 4.68 4 1.523051-.0491116 2.93274-.8170213 3.8-2.07l2 1.52c-1.453513 1.8996886-3.751504 2.9588601-6.14 2.83-4.38 0-7.13-3.15-7.13-7.28-.07791-1.9326457.647326-3.8113902 2.00361-5.1904053 1.356284-1.3790152 3.222716-2.1353751 5.15639-2.0895947 4.89 0 6.76 3.74 6.76 7.31v.94zm8.3-2.11c-.06-2.31-1.34-4-4-4-2.268267-.0204704-4.15666 1.7361737-4.3 4z"
+              fill="#fff"
+              fill-rule="nonzero"
+            />
+            <path
+              d="m14.58 5.24.7-3.89"
+              stroke="#fff"
+              stroke-linecap="square"
+              stroke-width="1.77"
+            />
+            <path
+              d="m17.8 3.86-2.44-2.98-3.32 1.94"
+              stroke="#fff"
+              stroke-linecap="square"
+              stroke-linejoin="round"
+              stroke-width="1.77"
+            />
+            <path
+              d="m11.66 21.84.68-3.89"
+              stroke="#fff"
+              stroke-linecap="square"
+              stroke-width="1.77"
+            />
+            <path
+              d="m14.88 20.45-2.46-2.97-3.31 1.95"
+              stroke="#fff"
+              stroke-linecap="square"
+              stroke-linejoin="round"
+              stroke-width="1.77"
+            />
+            <path
+              d="m13.07 13.82.68-3.89"
+              stroke="#fff"
+              stroke-linecap="square"
+              stroke-width="1.77"
+            />
+            <path
+              d="m16.29 12.43-2.45-2.96-3.31 1.94"
+              stroke="#fff"
+              stroke-linecap="square"
+              stroke-linejoin="round"
+              stroke-width="1.77"
+            />
+            <circle
+              cx="10.77"
+              cy="26.85"
+              fill="#fff"
+              fill-rule="nonzero"
+              r="1.63"
+            />
+            <g stroke="#fff" stroke-linecap="square">
+              <path d="m6.15 21.5-2.99 2.08" stroke-width="1.68" />
+              <path
+                d="m6.33 24.87-3.53-1.04.26-3.67"
+                stroke-linejoin="round"
+                stroke-width="1.68"
+              />
+              <path d="m17.01 23.45 2.08 3" stroke-width="1.68" />
+              <path
+                d="m15.67 26.55 3.67.25 1.04-3.51"
+                stroke-linejoin="round"
+                stroke-width="1.68"
+              />
+              <path d="m20.42 17.36 3.66.66" stroke-width="1.72" />
+              <path
+                d="m21.68 20.57 2.84-2.47-1.79-3.29"
+                stroke-linejoin="round"
+                stroke-width="1.72"
+              />
+              <path d="m19.35 10.1 3.26-1.8" stroke-width="1.72" />
+              <path
+                d="m19.53 6.65 3.47 1.44-.65 3.69"
+                stroke-linejoin="round"
+                stroke-width="1.72"
+              />
+              <path d="m4.97 14.64-3.67-.64" stroke-width="1.72" />
+              <path
+                d="m2.68 17.22-1.82-3.29 2.81-2.48"
+                stroke-linejoin="round"
+                stroke-width="1.72"
+              />
+              <path d="m8.45 8.17-2.45-2.8" stroke-width="1.72" />
+              <path
+                d="m9.46 4.88-3.75.16-.66 3.69"
+                stroke-linejoin="round"
+                stroke-width="1.72"
+              />
+            </g>
+          </g>
+        </svg>
+
+        <!-- Title / tagline -->
+        <h1 class="title">
+          Long-term memory for AI. <span>Start building for free.</span>
+        </h1>
+
+        <!-- Auth container (small screens) -->
+        <div class="auth-container-mobile">
+          <div class="alert-notification">
+            <svg width="32" height="32" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36.2654 19.9269C36.2654 29.389 28.5948 37.0596 19.1327 37.0596C9.67061 37.0596 2 29.389 2 19.9269C2 10.4648 9.67061 2.79419 19.1327 2.79419C28.5948 2.79419 36.2654 10.4648 36.2654 19.9269Z" stroke="white" stroke-width="3.5144"/>
+              <path d="M21.0453 8.60278L20.6194 24.2623H16.6226L16.1858 8.60278H21.0453ZM18.621 31.2511C17.9003 31.2511 17.2815 30.9963 16.7646 30.4867C16.2477 29.9698 15.9929 29.351 16.0002 28.6303C15.9929 27.9169 16.2477 27.3053 16.7646 26.7957C17.2815 26.2861 17.9003 26.0313 18.621 26.0313C19.3126 26.0313 19.9205 26.2861 20.4447 26.7957C20.9688 27.3053 21.2345 27.9169 21.2418 28.6303C21.2345 29.1108 21.1071 29.5512 20.8596 29.9516C20.6194 30.3448 20.3027 30.6614 19.9096 30.9017C19.5165 31.1347 19.0869 31.2511 18.621 31.2511Z" fill="white"/>
+              </svg>
+
+          <div class="alert-content">
+            <div class="alert-title">Demand is extremely high</div>
+            <div class="alert-subtitle">
+              New users for the Starter (free) plan may be waitlisted. <a href="https://www.pinecone.io/learn/free-plan-update/" target="_blank">Learn more</a>
+            </div>
+          </div>
+        </div>
+        <h4 class="signup-cta alt">
+          <!-- Link hrefs filled by script -->
+          Already have an account? <a href="#" class="session-toggle-link login-link" >Sign In</a>
+        </h4>
+          <div id="signup-lock-container-small" class="lock-container-small"></div>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards">
+          <!-- Performance at scale -->
+          <div class="card">
+            <!-- Icon -->
+            <div class="card-icon">
+              <svg
+                width="42"
+                height="41"
+                viewBox="0 0 42 41"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22.4804 37.1396H14.751V21.8424H22.4804V37.1396Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M9.59861 37.1395H1.86914V29.491H9.59861V37.1395Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M31.4991 2.72095L23.7696 14.1938H27.6343V37.1395H35.3638V14.1938H39.2285L31.4991 2.72095Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <div class="card-content">
+              <h3>Performance at scale</h3>
+              <p>
+                Power search across billions of embeddings with ultra-low
+                query latency.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pay for what you use -->
+          <div class="card">
+            <!-- Icon -->
+            <div class="card-icon">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.9995 5.8335V10.0002"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M38.3327 24.1667H34.166"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M1.6665 24.1667H5.83317"
+                  stroke="#8C F1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M32.9634 11.2034L30.0176 14.1492"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M7.03662 11.2036L9.98245 14.1494"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M18.878 21.0267L15.833 12.5"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M35.3622 34.1668C37.2388 31.2901 38.333 27.8576 38.333 24.1668C38.333 14.0418 30.1247 5.8335 19.9997 5.8335C9.87479 5.8335 1.6665 14.0418 1.6665 24.1668C1.6665 27.8576 2.76066 31.2901 4.63732 34.1668H35.3622Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                />
+                <path
+                  d="M19.9998 27.5002C21.8408 27.5002 23.3332 26.0078 23.3332 24.1668C23.3332 22.3259 21.8408 20.8335 19.9998 20.8335C18.1589 20.8335 16.6665 22.3259 16.6665 24.1668C16.6665 26.0078 18.1589 27.5002 19.9998 27.5002Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                />
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <div class="card-content">
+              <h3>Pay for what you use</h3>
+              <p>
+                Start free, then pay only for what you use with efficient usage-based
+                pricing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fully managed -->
+          <div class="card">
+            <!-- Icon -->
+            <div class="card-icon">
+              <svg
+                width="39"
+                height="39"
+                viewBox="0 0 39 39"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.23987 9.74002L11.1511 16.6513"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M9.23987 4.74002L16.1511 11.6513"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M29.3848 4.74002L22.4735 11.6513"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M34.3848 9.74002L27.4735 16.6513"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M34.3848 29.885L27.4735 22.9738"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M29.3848 34.885L22.4735 27.9738"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M9.23987 34.885L16.1511 27.9738"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M4.23987 29.885L11.1511 22.9738"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M19.3125 37.9375C29.3227 37.9375 37.4375 29.8227 37.4375 19.8125C37.4375 9.80236 29.3227 1.68752 19.3125 1.68752C9.30234 1.68752 1.1875 9.80236 1.1875 19.8125C1.1875 29.8227 9.30234 37.9375 19.3125 37.9375Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                />
+                <path
+                  d="M19.3125 28.5625C24.145 28.5625 28.0625 24.645 28.0625 19.8125C28.0625 14.98 24.145 11.0625 19.3125 11.0625C14.48 11.0625 10.5625 14.98 10.5625 19.8125C10.5625 24.645 14.48 28.5625 19.3125 28.5625Z"
+                  stroke="#8CF1FF"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                />
+              </svg>
+            </div>
+
+            <div class="card-content">
+              <h3>Fully managed</h3>
+              <p>
+                No need to maintain infrastructure, monitor services, or
+                troubleshoot algorithms.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="logos">
+          <!-- Gong -->
+          <div class="logo logo-gong">
+            <img src="https://production-console.firebaseapp.com/assets/gong.png" alt="Gong" />
+          </div>
+
+          <!-- Co:here -->
+          <div class="logo">
+            <img src="https://production-console.firebaseapp.com/assets/chipper.png" alt="Chipper Cash" />
+          </div>
+
+          <!-- Perception Point -->
+          <div class="logo">
+            <img src="https://production-console.firebaseapp.com/assets/perception-point.png" alt="Perception Point" />
+          </div>
+
+          <!-- Zapier -->
+          <div class="logo">
+            <img src="https://production-console.firebaseapp.com/assets/zapier.png" alt="Zapier" />
+          </div>
+
+          <!-- Shopify -->
+          <div class="logo">
+            <img src="https://production-console.firebaseapp.com/assets/shopify.png" alt="Shopify" />
+          </div>
+
+          <!-- bambooHR -->
+          <div class="logo">
+            <img src="https://production-console.firebaseapp.com/assets/bamboohr.png" alt="bambooHR" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Right container -->
+    <div class="container-right signup">
+      <div>
+        <div class="auth-container auth-container-desktop">
+          <div class="alert-notification">
+            <svg width="32" height="32" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36.2654 19.9269C36.2654 29.389 28.5948 37.0596 19.1327 37.0596C9.67061 37.0596 2 29.389 2 19.9269C2 10.4648 9.67061 2.79419 19.1327 2.79419C28.5948 2.79419 36.2654 10.4648 36.2654 19.9269Z" stroke="white" stroke-width="3.5144"/>
+              <path d="M21.0453 8.60278L20.6194 24.2623H16.6226L16.1858 8.60278H21.0453ZM18.621 31.2511C17.9003 31.2511 17.2815 30.9963 16.7646 30.4867C16.2477 29.9698 15.9929 29.351 16.0002 28.6303C15.9929 27.9169 16.2477 27.3053 16.7646 26.7957C17.2815 26.2861 17.9003 26.0313 18.621 26.0313C19.3126 26.0313 19.9205 26.2861 20.4447 26.7957C20.9688 27.3053 21.2345 27.9169 21.2418 28.6303C21.2345 29.1108 21.1071 29.5512 20.8596 29.9516C20.6194 30.3448 20.3027 30.6614 19.9096 30.9017C19.5165 31.1347 19.0869 31.2511 18.621 31.2511Z" fill="white"/>
+              </svg>
+              
+          <div class="alert-content">
+            <div class="alert-title">Demand is extremely high</div>
+            <div class="alert-subtitle">
+              New users for the Starter (free) plan <br/>may be waitlisted. <a href="https://www.pinecone.io/learn/free-plan-update/" target="_blank" >Learn more</a>
+            </div>
+          </div>
+        </div>
+        <div class="lock-container-large">
+          <div id="signup-lock-container-large" ></div>
+          <h4 class="signup-cta">
+            <!-- Link hrefs filled by script -->
+            Already have an account? <a href="#" class="session-toggle-link login-link">Sign In</a>
+          </h4>
+        </div>
+      </div>
+      </div>
+
+      <!-- BG image container -->
+      <div class="bg-container"></div>
+    </div>
+    
+  </div>
+  </div>
+  <!-- Login Page Start -->
+  <div id = 'login-page'>
+    <div class="base">
+        <!-- Right container -->
+      <div class="container-right login">
+        <div>
+          <h2 style="text-align: center;">
+            Welcome Back!
+          </h2>
+          <div class="auth-container auth-container-desktop login">
+            <div>
+            <div id="login-lock-container-large" class="lock-container-large login"></div>
+            <h4 class="login-cta">
+              Don't have an account? <a href="#" class="session-toggle-link signup-link">Sign Up</a>
+            </h4>
+          </div>
+          </div>
+        </div>
+  
+        
+  
+        <!-- BG image container -->
+        <!-- <div class="bg-container"></div> -->
+      </div>
+      <div class="container-left">
+        <div class="inner-container">
+  
+          <!-- Auth container (small screens) -->
+          <div class="auth-container-mobile login">
+            <h2>
+            Welcome Back!
+          </h2>
+            <div id="login-lock-container-small" class="lock-container-small"> </div>
+            <h4 class="login-cta">
+              Don't have an account yet? <a href="#" class="session-toggle-link signup-link">Sign Up</a>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <!--[if IE 8]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+  <![endif]-->
+
+  <!--[if lte IE 9]>
+  <script src="https://cdn.auth0.com/js/base64.js"></script>
+  <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
+  <![endif]-->
+  <!-- check if user is performing login or registration -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+
+    let sessionType = urlParams.get('sessionType');
+
+    if (sessionType === 'login') {
+      // Perform the login action here
+      document.getElementById('login-page').style.display = 'block';
+      document.getElementById('signup-page').style.display = 'none';
+    } else if (sessionType === 'signup') {
+      // Show the sign-up form and hide the login form
+      document.getElementById('login-page').style.display = 'none';
+      document.getElementById('signup-page').style.display = 'block';
+    } else {
+      // Invalid or missing "type" parameter use default
+      document.getElementById('login-page').style.display = 'block';
+      document.getElementById('signup-page').style.display = 'none';
+    }
+
+    function updateSessionType(url, sessionType) {
+      const parsedUrl = new URL(url);
+      const queryParams = parsedUrl.searchParams;
+
+      queryParams.set('sessionType', sessionType);
+      parsedUrl.search = queryParams.toString();
+
+      return parsedUrl.toString();
+    }
+
+    const loginLinks = document.querySelectorAll('.login-link');
+    const signUpLinks = document.querySelectorAll('.signup-link');
+    const currentUrl = window.location.href;
+
+    for (const loginLink of loginLinks) {
+      const updatedUrl = updateSessionType(currentUrl, 'login');
+      loginLink.href = updatedUrl;
+    }
+
+    for (const signUpLink of signUpLinks) {
+      const updatedUrl = updateSessionType(currentUrl, 'signup');
+      signUpLink.href = updatedUrl;
+    }
+  </script>
+
+  <script src="https://cdn.auth0.com/js/lock/11.27/lock.min.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0/9.2/auth0.min.js"></script>
+  <script src="https://cdn.auth0.com/js/polyfills/1.0/object-assign.min.js"></script>
+  <script>
+/**
+ * Minified by jsDelivr using Terser v3.14.1.
+ * Original file: /npm/js-cookie@2.2.1/src/js.cookie.js
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+!function(e){var n;if("function"==typeof define&&define.amd&&(define(e),n=!0),"object"==typeof exports&&(module.exports=e(),n=!0),!n){var t=window.Cookies,o=window.Cookies=e();o.noConflict=function(){return window.Cookies=t,o}}}(function(){function e(){for(var e=0,n={};e<arguments.length;e++){var t=arguments[e];for(var o in t)n[o]=t[o]}return n}function n(e){return e.replace(/(%[0-9A-Z]{2})+/g,decodeURIComponent)}return function t(o){function r(){}function i(n,t,i){if("undefined"!=typeof document){"number"==typeof(i=e({path:"/"},r.defaults,i)).expires&&(i.expires=new Date(1*new Date+864e5*i.expires)),i.expires=i.expires?i.expires.toUTCString():"";try{var c=JSON.stringify(t);/^[\{\[]/.test(c)&&(t=c)}catch(e){}t=o.write?o.write(t,n):encodeURIComponent(String(t)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),n=encodeURIComponent(String(n)).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent).replace(/[\(\)]/g,escape);var f="";for(var u in i)i[u]&&(f+="; "+u,!0!==i[u]&&(f+="="+i[u].split(";")[0]));return document.cookie=n+"="+t+f}}function c(e,t){if("undefined"!=typeof document){for(var r={},i=document.cookie?document.cookie.split("; "):[],c=0;c<i.length;c++){var f=i[c].split("="),u=f.slice(1).join("=");t||'"'!==u.charAt(0)||(u=u.slice(1,-1));try{var a=n(f[0]);if(u=(o.read||o)(u,a)||n(u),t)try{u=JSON.parse(u)}catch(e){}if(r[a]=u,e===a)break}catch(e){}}return e?r[e]:r}}return r.set=i,r.get=function(e){return c(e,!1)},r.getJSON=function(e){return c(e,!0)},r.remove=function(n,t){i(n,"",e(t,{expires:-1}))},r.defaults={},r.withConverter=t,r}(function(){})});
+   let defaultPage = 'signup';
+    var lock;
+    function buildLock(lockContainerID) {
+      // Decode utf8 characters properly
+      var config = JSON.parse(decodeURIComponent(escape(window.atob('eyJpY29uIjoiaHR0cHM6Ly93d3cucGluZWNvbmUuaW8vaW1hZ2VzL3BpbmVjb25lLWxvZ28ucG5nIiwiYXNzZXRzVXJsIjoiIiwiYXV0aDBEb21haW4iOiJwcm9kdWN0aW9uLXYyLXBpbmVjb25lLWlvLnVzLmF1dGgwLmNvbSIsImF1dGgwVGVuYW50IjoicHJvZHVjdGlvbi12Mi1waW5lY29uZS1pbyIsImNsaWVudENvbmZpZ3VyYXRpb25CYXNlVXJsIjoiaHR0cHM6Ly9wcm9kdWN0aW9uLXYyLXBpbmVjb25lLWlvLnVzLmF1dGgwLmNvbS8iLCJjYWxsYmFja09uTG9jYXRpb25IYXNoIjpmYWxzZSwiY2FsbGJhY2tVUkwiOiJodHRwczovL29hdXRoLnJlYWRtZS5pby9wL3BpbmVjb25lLWdyb3VwL29hdXRoL2NhbGxiYWNrP3JlZGlyZWN0PS9yZWZlcmVuY2UvY29uZmlndXJlX2luZGV4LyIsImNkbiI6Imh0dHBzOi8vY2RuLmF1dGgwLmNvbS8iLCJjbGllbnRJRCI6IllidWo3bnVUN0RaWkJoNGY2czJlNEs4cUZveXJYS2ZyIiwiZGljdCI6eyJzaWduaW4iOnsidGl0bGUiOiJSZWFkTWUtRG9jcyJ9fSwiZXh0cmFQYXJhbXMiOnsicHJvdG9jb2wiOiJvYXV0aDIiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUiLCJzZXNzaW9uVHlwZSI6ImxvZ2luIiwiX2NzcmYiOiI1bXU5SXNnVi12RUVtREJDYXEtSElEUjdkaXg2dnVucnotZkEiLCJfaW50c3RhdGUiOiJkZXByZWNhdGVkIiwic3RhdGUiOiJoS0ZvMlNCVlEydFJZMFEwYUZab1FqSjRlRzU1WVVreGFtVnhNazFFYUZGaU1uRTJVcUZ1cFd4dloybHVvM1JwWk5rZ1owSTNkRlJ2ZFdWV1ppMDFjbTFPTVVORWEzZHVhemRWYkdVMFJraHNRMnFqWTJsazJTQlpZblZxTjI1MVZEZEVXbHBDYURSbU5uTXlaVFJMT0hGR2IzbHlXRXRtY2cifSwiaW50ZXJuYWxPcHRpb25zIjp7InByb3RvY29sIjoib2F1dGgyIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInJlc3BvbnNlX3R5cGUiOiJjb2RlIiwic2Vzc2lvblR5cGUiOiJsb2dpbiIsIl9jc3JmIjoiNW11OUlzZ1YtdkVFbURCQ2FxLUhJRFI3ZGl4NnZ1bnJ6LWZBIiwiX2ludHN0YXRlIjoiZGVwcmVjYXRlZCIsInN0YXRlIjoiaEtGbzJTQlZRMnRSWTBRMGFGWm9Rako0ZUc1NVlVa3hhbVZ4TWsxRWFGRmlNbkUyVXFGdXBXeHZaMmx1bzNScFpOa2daMEkzZEZSdmRXVldaaTAxY20xT01VTkVhM2R1YXpkVmJHVTBSa2hzUTJxalkybGsyU0JaWW5WcU4yNTFWRGRFV2xwQ2FEUm1Obk15WlRSTE9IRkdiM2x5V0V0bWNnIn0sIndpZGdldFVybCI6Imh0dHBzOi8vY2RuLmF1dGgwLmNvbS93Mi9hdXRoMC13aWRnZXQtNS4xLm1pbi5qcyIsImlzVGhpcmRQYXJ0eUNsaWVudCI6ZmFsc2UsImF1dGhvcml6YXRpb25TZXJ2ZXIiOnsidXJsIjoiaHR0cHM6Ly9wcm9kdWN0aW9uLXYyLXBpbmVjb25lLWlvLnVzLmF1dGgwLmNvbSIsImlzc3VlciI6Imh0dHBzOi8vcHJvZHVjdGlvbi12Mi1waW5lY29uZS1pby51cy5hdXRoMC5jb20vIn0sImNvbG9ycyI6eyJwYWdlX2JhY2tncm91bmQiOiIjMDAwMDAwIiwicHJpbWFyeSI6IiMwMDU5ZDYifX0='))));
+      config.extraParams = config.extraParams || {};
+      sessionType = sessionType ?? config.extraParams.sessionType;
+      if (sessionType === null) {
+        const urlParams = new URLSearchParams(window.location.search);
+        sessionType = urlParams.get('sessionType') ?? defaultPage;
+      }
+      config.internalOptions = config.internalOptions || {};
+      config.internalOptions.hubspotutk = config.internalOptions.hubspotutk || Cookies.get('hubspotutk');
+      var connection = config.connection;
+      var prompt = config.prompt;
+      var languageDictionary = {};
+      var language;
+  
+      if (config.dict && config.dict.signin && config.dict.signin.title) {
+        languageDictionary = { 
+          title: config.dict.signin.title 
+        };
+      } else if (typeof config.dict === 'string') {
+        language = config.dict;
+      }
+      var loginHint = config.extraParams.login_hint;
+  
+      lock = new Auth0LockPasswordless(config.clientID, config.auth0Domain, {
+        auth: {
+          redirectUrl: config.callbackURL,
+          responseType: (config.internalOptions || {}).response_type ||
+            (config.callbackOnLocationHash ? 'token' : 'code'),
+          params: config.internalOptions
+        },
+        configurationBaseUrl: config.clientConfigurationBaseUrl,
+        overrides: {
+          __tenant: config.auth0Tenant,
+          __token_issuer: config.authorizationServer.issuer
+        },
+        assetsUrl:  config.assetsUrl,
+        allowedConnections: connection ? [connection] : ['google-oauth2', 'github', 'email'],
+        rememberLastLogin: !prompt,
+        language: language,
+        languageDictionary: {
+          ...languageDictionary,
+          title: '',
+          signUpWithLabel: 'Continue with',
+          submitLabel: sessionType === 'login' ? 'Continue' : 'Sign Up',
+          signUpTerms: 'By submitting, you accept the <a href="https://www.pinecone.io/user-agreement">End-User License Agreement</a>.'
+        },
+        theme: {
+          logo: "https://www.pinecone.io/images/pinecone-logo.svg",
+          authButtons: {
+            'github': {
+              primaryColor: '#FFF',
+              foregroundColor: '#000',
+              icon: 'https://development-pinecone.firebaseapp.com/assets/github_logo.png'
+            }
+          },
+          primaryColor:    '#030080'
+        },
+        container: lockContainerID,
+        closable: false
+      });
+  
+      lock.show();
+
+      var params = Object.assign({
+        overrides: {
+          __tenant: config.auth0Tenant,
+          __token_issuer: config.authorizationServer.issuer,
+        },
+        domain: config.auth0Domain,
+        clientID: config.clientID,
+        redirectUri: config.callbackURL,
+        responseType: 'code'
+      }, config.internalOptions);
+
+      var webAuth = new auth0.WebAuth(params);
+
+      // Add to the config file to set up SSO for each Auth0 Enterprise Connection
+      // Multiple domains can have the same enterprise connection
+      const enterpriseConnectionDomains = {};
+
+      /* This function enables to capture the entered emails.
+      * Once the email domain matches any of the whitelisted ones,
+      * the user will be redirected to the configured connection.      
+      *
+      * If for specific domains, you would want to prevent passwordless
+      * login, it is mandatory to add an Auth0 rule which will prevent 
+      * those users to authenticate. Frontend check isn't enough 
+      * to ensure this.
+      * 
+      * See Lock API Reference for lock functions https://auth0.com/docs/libraries/lock/lock-api-reference#on-
+      */
+      lock.on("socialOrEmail ready", function(authResult) {
+        document.querySelector("input[name='email']").addEventListener('input', function(event) {
+          const email = event.target.value;
+          const emailSplit = email.split('@');
+          const userEmailDomain = emailSplit[emailSplit.length - 1].toLowerCase();
+          const connection = enterpriseConnectionDomains[userEmailDomain];
+          
+          if (connection) {
+            document.querySelector(".auth0-lock-submit").disabled = true;
+            webAuth.authorize({
+              connection: connection,
+            });
+          } else {
+            document.querySelector(".auth0-lock-submit").disabled = false;
+          }
+        })
+      });
+    }
+
+    // Define the container IDs for the login and signup pages
+    const loginContainerSmall = 'login-lock-container-small';
+    const loginContainerLarge = 'login-lock-container-large';
+    const signupContainerSmall = 'signup-lock-container-small';
+    const signupContainerLarge = 'signup-lock-container-large';
+
+    // Define a function to build the auth widget
+    function buildAuthWidget(containerID) {
+      lock.destroy();
+      buildLock(containerID);
+    }
+
+    // Function to handle the resize event
+    function handleResize(currentContainerID, containerSmall, containerLarge) {
+      if (window.innerWidth < 840 && currentContainerID !== containerSmall) {
+        buildAuthWidget(containerSmall);
+        return containerSmall;
+      } else if (window.innerWidth >= 840 && currentContainerID !== containerLarge) {
+        buildAuthWidget(containerLarge);
+        return containerLarge;
+      }
+      return currentContainerID;
+    }
+
+    // Determining which container ID to use based on the session type
+    let containerID;
+    let containerSmall;
+    let containerLarge;
+    sessionType = sessionType ?? defaultPage;
+    if (sessionType === 'login') {
+      containerSmall = loginContainerSmall;
+      containerLarge = loginContainerLarge;
+      containerID = window.innerWidth < 840 ? loginContainerSmall : loginContainerLarge;
+    } else if (sessionType === 'signup') {
+      containerSmall = signupContainerSmall;
+      containerLarge = signupContainerLarge;
+      containerID = window.innerWidth < 840 ? signupContainerSmall : signupContainerLarge;
+    }
+
+    // Building the auth widget using the container ID
+    buildLock(containerID);
+
+    // Window resize event listener
+    addEventListener('resize', function() {
+      containerID = handleResize(containerID, containerSmall, containerLarge);
+    });
+
+    
+  </script>
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8231564.js"></script>
+  <!-- End of HubSpot Embed Code -->
+</body>
+</html>
